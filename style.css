@@ -1,65 +1,89 @@
-/* style.css */
 body {
-  font-family: 'Arial', sans-serif;
-  background-color: #e9f4f5;
-  color: #333;
-  text-align: center;
+    font-family: Arial, sans-serif;
+    background-image: url('path/to/your/background-image.jpg');
+    background-size: cover;
+    margin: 0;
+    padding: 0;
 }
 
-.quiz-container {
-  width: 80%;
-  max-width: 600px;
-  margin: auto;
-  padding: 20px;
-  border-radius: 8px;
-  background-color: #fff;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.question {
-  margin-bottom: 20px;
+header {
+    text-align: center;
+    margin-bottom: 20px;
 }
 
-.options li {
-  list-style: none;
-  margin: 10px 0;
+h1 {
+    font-size: 2.5em;
+    margin: 0;
 }
 
-.options button {
-  width: 100%;
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  background-color: #22b573;
-  color: white;
-  font-size: 16px;
-  cursor: pointer;
+main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
 }
 
-.options button:hover {
-  background-color: #1d9a5b;
+section {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
-.feedback {
-  margin-top: 20px;
+h2 {
+    font-size: 1.5em;
+    margin-top: 0;
 }
 
-.final-score {
-  display: none;
-  font-size: 24px;
-  font-weight: bold;
-  color: #22b573;
+label {
+    display: block;
+    margin: 10px 0 5px;
 }
 
-button#submit-answer {
-  padding: 10px 20px;
-  background-color: #f7b731;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+select, button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1em;
 }
 
-button#submit-answer:hover {
-  background-color: #f39c12;
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #f4f4f4;
+}
+
+.win-rate {
+    background-color: #d4edda;
+}
+
+.medium-win-rate {
+    background-color: #fff3cd;
+}
+
+.low-win-rate {
+    background-color: #f8d7da;
 }
