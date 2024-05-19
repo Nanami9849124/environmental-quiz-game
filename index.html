@@ -1,19 +1,221 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Environmental Tips Quiz Game</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Captain Win Rates</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Firebase App (the core Firebase SDK) -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-firestore.js"></script>
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "YOUR_API_KEY",
+            authDomain: "YOUR_AUTH_DOMAIN",
+            projectId: "YOUR_PROJECT_ID",
+            storageBucket: "YOUR_STORAGE_BUCKET",
+            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+            appId: "YOUR_APP_ID"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        var db = firebase.firestore();
+    </script>
 </head>
 <body>
-  <div class="quiz-container">
-    <h1>Environmental Tips Quiz</h1>
-    <div id="quiz-question" class="question"></div>
-    <ul id="quiz-options" class="options"></ul>
-    <div id="feedback" class="feedback"></div>
-    <button id="submit-answer" hidden>Next Question</button>
-  </div>
-  <div id="final-score" class="final-score" hidden></div>
-  <script src="script.js"></script>
+    <div class="container">
+        <header>
+            <h1>Team Captain Win Rates</h1>
+        </header>
+        <main>
+            <section class="form-section">
+                <h2>Enter Match Data</h2>
+                <form id="data-entry-form">
+                    <label for="team-captain">Team Captain:</label>
+                    <select id="team-captain" name="team-captain" required>
+                        <option value="">Select a captain</option>
+                        <option value="Tom">Tom</option>
+                        <option value="Tristan">Tristan</option>
+                        <option value="James">James</option>
+                        <option value="Harry">Harry</option>
+                        <option value="Will">Will</option>
+                        <option value="David">David</option>
+                        <option value="Jack">Jack</option>
+                        <option value="Ollie">Ollie</option>
+                        <option value="Fluke">Fluke</option>
+                        <option value="Lawrence">Lawrence</option>
+                    </select>
+
+                    <label for="player1">Player 1:</label>
+                    <select id="player1" name="player1" required>
+                        <option value="">Select a player</option>
+                        <option value="Tom">Tom</option>
+                        <option value="Tristan">Tristan</option>
+                        <option value="James">James</option>
+                        <option value="Harry">Harry</option>
+                        <option value="Will">Will</option>
+                        <option value="David">David</option>
+                        <option value="Jack">Jack</option>
+                        <option value="Ollie">Ollie</option>
+                        <option value="Fluke">Fluke</option>
+                        <option value="Lawrence">Lawrence</option>
+                    </select>
+
+                    <label for="player2">Player 2:</label>
+                    <select id="player2" name="player2" required>
+                        <option value="">Select a player</option>
+                        <option value="Tom">Tom</option>
+                        <option value="Tristan">Tristan</option>
+                        <option value="James">James</option>
+                        <option value="Harry">Harry</option>
+                        <option value="Will">Will</option>
+                        <option value="David">David</option>
+                        <option value="Jack">Jack</option>
+                        <option value="Ollie">Ollie</option>
+                        <option value="Fluke">Fluke</option>
+                        <option value="Lawrence">Lawrence</option>
+                    </select>
+
+                    <label for="player3">Player 3:</label>
+                    <select id="player3" name="player3" required>
+                        <option value="">Select a player</option>
+                        <option value="Tom">Tom</option>
+                        <option value="Tristan">Tristan</option>
+                        <option value="James">James</option>
+                        <option value="Harry">Harry</option>
+                        <option value="Will">Will</option>
+                        <option value="David">David</option>
+                        <option value="Jack">Jack</option>
+                        <option value="Ollie">Ollie</option>
+                        <option value="Fluke">Fluke</option>
+                        <option value="Lawrence">Lawrence</option>
+                    </select>
+
+                    <label for="player4">Player 4:</label>
+                    <select id="player4" name="player4" required>
+                        <option value="">Select a player</option>
+                        <option value="Tom">Tom</option>
+                        <option value="Tristan">Tristan</option>
+                        <option value="James">James</option>
+                        <option value="Harry">Harry</option>
+                        <option value="Will">Will</option>
+                        <option value="David">David</option>
+                        <option value="Jack">Jack</option>
+                        <option value="Ollie">Ollie</option>
+                        <option value="Fluke">Fluke</option>
+                        <option value="Lawrence">Lawrence</option>
+                    </select>
+
+                    <label for="player5">Player 5:</label>
+                    <select id="player5" name="player5" required>
+                        <option value="">Select a player</option>
+                        <option value="Tom">Tom</option>
+                        <option value="Tristan">Tristan</option>
+                        <option value="James">James</option>
+                        <option value="Harry">Harry</option>
+                        <option value="Will">Will</option>
+                        <option value="David">David</option>
+                        <option value="Jack">Jack</option>
+                        <option value="Ollie">Ollie</option>
+                        <option value="Fluke">Fluke</option>
+                        <option value="Lawrence">Lawrence</option>
+                    </select>
+
+                    <label for="win-loss">W/L:</label>
+                    <select id="win-loss" name="win-loss" required>
+                        <option value="">Select result</option>
+                        <option value="Win">Win</option>
+                        <option value="Loss">Loss</option>
+                    </select>
+
+                    <button type="submit">Submit</button>
+                </form>
+            </section>
+
+            <section class="table-section">
+                <h2>Team Captain Win Rates</h2>
+                <table id="win-rates-table">
+                    <thead>
+                        <tr>
+                            <th>Team Captain</th>
+                            <th>Wins</th>
+                            <th>Losses</th>
+                            <th>Win Rate</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Table rows will be added dynamically here -->
+                    </tbody>
+                </table>
+            </section>
+
+            <section class="match-history-section">
+                <h2>Match History</h2>
+                <label for="select-captain">Select Team Captain:</label>
+                <select id="select-captain">
+                    <option value="">Select a captain</option>
+                    <option value="Tom">Tom</option>
+                    <option value="Tristan">Tristan</option>
+                    <option value="James">James</option>
+                    <option value="Harry">Harry</option>
+                    <option value="Will">Will</option>
+                    <option value="David">David</option>
+                    <option value="Jack">Jack</option>
+                    <option value="Ollie">Ollie</option>
+                    <option value="Fluke">Fluke</option>
+                    <option value="Lawrence">Lawrence</option>
+                </select>
+                <button id="view-matches">View Matches</button>
+                <table id="match-history-table">
+                    <thead>
+                        <tr>
+                            <th>Team Captain</th>
+                            <th>Players</th>
+                            <th>W/L</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Table rows will be added dynamically here -->
+                    </tbody>
+                </table>
+            </section>
+
+            <section class="player-stats-section">
+                <h2>Player Win Rates</h2>
+                <label for="select-player">Select Player:</label>
+                <select id="select-player">
+                    <option value="">Select a player</option>
+                    <option value="Tom">Tom</option>
+                    <option value="Tristan">Tristan</option>
+                    <option value="James">James</option>
+                    <option value="Harry">Harry</option>
+                    <option value="Will">Will</option>
+                    <option value="David">David</option>
+                    <option value="Jack">Jack</option>
+                    <option value="Ollie">Ollie</option>
+                    <option value="Fluke">Fluke</option>
+                    <option value="Lawrence">Lawrence</option>
+                </select>
+                <button id="view-player-stats">View Player Stats</button>
+                <table id="player-stats-table">
+                    <thead>
+                        <tr>
+                            <th>Player</th>
+                            <th>Wins</th>
+                            <th>Losses</th>
+                            <th>Win Rate</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Table rows will be added dynamically here -->
+                    </tbody>
+                </table>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
